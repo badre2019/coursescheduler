@@ -21,5 +21,7 @@ public class Member {
 
     @NonNull
     private String firstName;
+
+    //dddd
 }
 
