@@ -21,17 +21,5 @@ public class Member {
 
     @NonNull
     private String firstName;
-
-    @ManyToMany
-    @JoinTable(
-            name="member_course"
-            , joinColumns={
-            @JoinColumn(name="member_id", nullable=false)
-    }
-            , inverseJoinColumns={
-            @JoinColumn(name="course_id", nullable=false)
-    }
-    )
-    private List<Course> courses;
 }
 
