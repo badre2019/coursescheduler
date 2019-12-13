@@ -2,13 +2,13 @@
     <div>
         <v-data-table
                 :headers="headers"
-                :items="members"
+                :items="courses"
                 sort-by="name"
                 class="elevation-1"
         >
             <template v-slot:top>
                 <v-toolbar flat color="white">
-                    <v-toolbar-title>List of members</v-toolbar-title>
+                    <v-toolbar-title>List of courses</v-toolbar-title>
                     <v-divider
                             class="mx-4"
                             inset
@@ -17,7 +17,7 @@
                     <div class="flex-grow-1"></div>
                     <v-dialog v-model="dialog" max-width="500px">
                         <template v-slot:activator="{ on }">
-                            <v-btn color="primary" dark class="mb-2" v-on="on">Add Member</v-btn>
+                            <v-btn color="primary" dark class="mb-2" v-on="on">Add Course</v-btn>
                         </template>
                         <v-card>
                             <v-card-title>
@@ -29,9 +29,6 @@
                                     <v-row>
                                         <v-col cols="12" sm="6" md="4">
                                             <v-text-field v-model="editedItem.name" label="name"></v-text-field>
-                                        </v-col>
-                                        <v-col cols="12" sm="6" md="4">
-                                            <v-text-field v-model="editedItem.firstName" label="first name"></v-text-field>
                                         </v-col>
                                     </v-row>
                                 </v-container>
@@ -66,10 +63,10 @@
 </template>
 
 <script>
-    import apimember from "../apiMember";
+    import apiCourse from "../apiCourse";
 
     export default {
-        name: "ListMembres",
+        name: "ListCourses",
         data: () => ({
             dialog: false,
             headers: [
@@ -80,31 +77,25 @@
                     value: 'name',
                 },
                 {
-                    text: 'First Name',
-                    value: 'firstName'
-                },
-                {
                     text: 'Actions',
                     value: 'action',
                     sortable: false
                 },
             ],
-            members: [],
+            courses: [],
             editedIndex: -1,
             editedItem: {
                 id: null,
-                name: '',
-                firstName: ''
+                name: ''
             },
             defaultItem: {
                 id: null,
-                name: '',
-                firstName: ''
+                name: ''
             },
         }),
         computed: {
             formTitle () {
-                return this.editedIndex === -1 ? 'Add Member' : 'Edit Member'
+                return this.editedIndex === -1 ? 'Add Course' : 'Edit Course'
             },
         },
 
@@ -121,22 +112,22 @@
         methods: {
 
             initialize () {
-                apimember.getAllMembers()
+                apiCourse.getAllCourses()
                 .then(response => {
-                    this.members = response.data
+                    this.courses = response.data
                 })
             },
 
             editItem (item) {
-                this.editedIndex = this.members.indexOf(item)
+                this.editedIndex = this.courses.indexOf(item)
                 this.editedItem = Object.assign({}, item)
                 this.dialog = true
             },
 
             deleteItem (item) {
-                const index = this.members.indexOf(item)
-                confirm('Are you sure you want to delete this member?') && this.members.splice(index, 1)
-                apimember.removeForIdMember(item.id)
+                const index = this.courses.indexOf(item)
+                confirm('Are you sure you want to delete this member?') && this.courses.splice(index, 1)
+                apiCourse.removeForIdCourses(item.id)
             },
 
             close () {
@@ -149,15 +140,15 @@
 
             save () {
                 if (this.editedIndex > -1) {
-                    Object.assign(this.members[this.editedIndex], this.editedItem)
+                    Object.assign(this.courses[this.editedIndex], this.editedItem)
                 } else {
-                    this.members.push(this.editedItem)
+                    this.courses.push(this.editedItem)
                 }
                 this.close()
                 if(this.editedIndex === -1){
-                    apimember.createNewMember(this.editedItem.name, this.editedItem.firstName)
+                    apiCourse.createNewCourse(this.editedItem.name)
                 }else{
-                    apimember.updateForIdMember(this.editedItem.id, this.editedItem.name, this.editedItem.firstName)
+                    apiCourse.updateForIdCourse(this.editedItem.id, this.editedItem.name)
                 }
             },
         },
