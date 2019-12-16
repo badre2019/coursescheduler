@@ -18,21 +18,22 @@
 
     <v-content>
       <ListMembres/>
+      <ListCourses/>
     </v-content>
   </v-app>
 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 import ListMembres from "./components/ListMembres";
+import ListCourses from "./components/ListCourses";
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
     ListMembres,
+    ListCourses
   },
 
   data: () => ({
