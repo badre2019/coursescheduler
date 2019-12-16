@@ -22,7 +22,7 @@ export default {
     createNewMember: (name, firstName) => instance.post('members', {name: name, firstName: firstName}),
 
     // (R)ead
-    getAllMembers () {
+    getAll () {
         return this.execute('GET', 'members', null, {
             transformResponse: [function (data) {
                 return JSON.parse(data)
@@ -33,5 +33,5 @@ export default {
     updateForIdMember: (id, name, firstName) => instance.put('members/' + id, {name: name, firstName: firstName}),
 
     // (D)elete Member
-    removeForIdMember: (id) => instance.delete('members/' + id)
+    removeForId: (id) => instance.delete('members/' + id)
 }
