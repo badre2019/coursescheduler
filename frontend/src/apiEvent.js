@@ -18,20 +18,20 @@ export default {
         })
     },
 
-    // (C)reate Member
-    createNewMember: (member) => instance.post('members', member),
+    // (C)reate Event
+    //createNewEvent: (Event) => instance.post('members', Event),
 
     // (R)ead
-    getAllMembers () {
-        return this.execute('GET', 'members', null, {
+    getAllEvents () {
+        return this.execute('GET', 'events', null, {
             transformResponse: [function (data) {
                 return JSON.parse(data)
             }]
         })
     },
-    // (U)pdate Member
-    updateForIdMember: (id, member) => instance.put('members/' + member.id, member),
+    // (U)pdate Event
+    //updateForIdEvent: (id, name, firstName) => instance.put('members/' + id, {name: name, firstName: firstName}),
 
-    // (D)elete Member
-    removeForIdMember: (id) => instance.delete('members/' + id)
+    // (D)elete Event
+    //removeForIdEvent: (id) => instance.delete('members/' + id)
 }

@@ -2,8 +2,8 @@
   <v-app>
     <v-app-bar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Courses Scheduler</span>
-        <span class="font-weight-light"> TENNIS</span>
+        <span>Events Scheduler</span>
+        <span class="font-weight-light"> Events</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -19,6 +19,7 @@
     <v-content>
       <ListMembres/>
       <ListCourses/>
+      <Event/>
     </v-content>
   </v-app>
 
@@ -27,13 +28,15 @@
 <script>
 import ListMembres from "./components/ListMembres";
 import ListCourses from "./components/ListCourses";
+import Event from "./components/Event";
 
 export default {
   name: 'App',
 
   components: {
     ListMembres,
-    ListCourses
+    ListCourses,
+    Event
   },
 
   data: () => ({
