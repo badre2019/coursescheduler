@@ -169,11 +169,11 @@
             this.$refs.calendar.checkChange()
         },
         created () {
-            this.initialize()
+            this.initializeEvents()
         },
         methods: {
 
-            initialize () {
+           initializeEvents () {
                 apiEvent.getAllEvents()
                     .then(response => {
                         this.events = response.data
