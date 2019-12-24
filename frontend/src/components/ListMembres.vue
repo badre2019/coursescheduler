@@ -121,7 +121,7 @@
         methods: {
 
             initialize () {
-                apimember.getAllMembers()
+                apimember.getAll()
                 .then(response => {
                     this.members = response.data
                 })
@@ -136,7 +136,7 @@
             deleteItem (item) {
                 const index = this.members.indexOf(item)
                 confirm('Are you sure you want to delete this member?') && this.members.splice(index, 1)
-                apimember.removeForIdMember(item.id)
+                apimember.removeForId(item.id)
             },
 
             close () {
