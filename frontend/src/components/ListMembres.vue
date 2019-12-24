@@ -155,9 +155,9 @@
                 }
                 this.close()
                 if(this.editedIndex === -1){
-                    apimember.createNewMember(this.editedItem.name, this.editedItem.firstName)
+                    apimember.createNewMember(this.editedItem)
                 }else{
-                    apimember.updateForIdMember(this.editedItem.id, this.editedItem.name, this.editedItem.firstName)
+                    apimember.updateForIdMember(this.editedItem.id, this.editedItem)
                 }
             },
         },

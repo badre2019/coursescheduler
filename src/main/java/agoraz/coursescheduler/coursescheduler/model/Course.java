@@ -3,13 +3,11 @@ package agoraz.coursescheduler.coursescheduler.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class Member {
+public class Course{
 
     @Id
     @GeneratedValue
@@ -17,8 +15,4 @@ public class Member {
 
     @NonNull
     private String name;
-
-    @NonNull
-    private String firstName;
 }
-
