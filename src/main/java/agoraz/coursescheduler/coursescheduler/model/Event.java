@@ -12,7 +12,8 @@ public class Event {
 
     @Id
     @GeneratedValue
-    private int sessionId;
+    @Column(name = "event_id")
+    private int id;
 
     private String name;
 
