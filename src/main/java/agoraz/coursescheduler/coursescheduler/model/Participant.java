@@ -3,6 +3,7 @@ package agoraz.coursescheduler.coursescheduler.model;
 import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +18,7 @@ public class Participant implements Serializable {
     private String name;
 
     private String firstname;
+
+    @OneToMany(mappedBy = "participant")
+    private List<Attendance> attendances;
 }

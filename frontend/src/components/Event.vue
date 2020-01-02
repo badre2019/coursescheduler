@@ -126,6 +126,7 @@
             start: null,
             end: null,
             selectedEvent: {},
+            participant : null,
             selectedElement: null,
             selectedOpen: false,
             events: [],

@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "event")
 public class Event {
 
     @Id
@@ -35,4 +37,21 @@ public class Event {
 
     @OneToOne
     private Member member;
+
+    // a participant attends to an event (or session)
+    @OneToMany(mappedBy = "event")
+    private List<Attendance> attendances;
+
+    /*@ManyToMany
+    @JoinTable(
+            name="attendance"
+            , joinColumns={
+            @JoinColumn(name="event_event_id", nullable=false)
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="participant_participant_id", nullable=false)
+    }
+    )
+    private List<Participant> participantList;*/
+
 }
