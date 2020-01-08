@@ -18,7 +18,6 @@
 
     <v-content>
       <ListMembres/>
-      <ListCourses/>
       <Event/>
     </v-content>
   </v-app>
@@ -27,7 +26,6 @@
 
 <script>
 import ListMembres from "./components/ListMembres";
-import ListCourses from "./components/ListCourses";
 import Event from "./components/Event";
 
 export default {
@@ -35,7 +33,6 @@ export default {
 
   components: {
     ListMembres,
-    ListCourses,
     Event
   },
 

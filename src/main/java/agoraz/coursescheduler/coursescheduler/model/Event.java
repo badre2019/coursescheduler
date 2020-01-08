@@ -4,15 +4,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "event")
 public class Event {
 
     @Id
     @GeneratedValue
-    private int sessionId;
+    @Column(name = "event_id")
+    private int id;
 
     private String name;
 
@@ -34,4 +37,22 @@ public class Event {
 
     @OneToOne
     private Member member;
+
+    /*// a participant attends to an event (or session)
+    @OneToMany//(mappedBy = "event")
+    private List<Attendance> attendances;*/
+
+    @OneToMany
+    @JoinTable(
+            name="attendance"
+            , joinColumns={
+            @JoinColumn(name="event_id", nullable=false)
+    }
+            , inverseJoinColumns={
+            @JoinColumn(name="participant_id", nullable=false)
+    }
+    )
+    private List<Attendance> attendances;
+
+
 }
