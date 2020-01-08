@@ -17,7 +17,8 @@ public class Attendance {
     @JoinColumn(name ="participant_id")
     private Participant participant;
 
+    /*
     @ManyToOne
     @JoinColumn(name ="event_id")
-    private Event event;
+    private Event event;*/
 }

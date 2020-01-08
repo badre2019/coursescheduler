@@ -19,6 +19,6 @@ public class Participant implements Serializable {
 
     private String firstname;
 
-    @OneToMany(mappedBy = "participant")
-    private List<Attendance> attendances;
+    /*@OneToMany(mappedBy = "participant")
+    private List<Attendance> attendances;*/
 }

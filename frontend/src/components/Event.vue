@@ -88,6 +88,28 @@
                                 </v-toolbar>
                                 <v-card-text>
                                     <span v-html="selectedEvent.details"></span>
+                                    <v-card
+                                            class="mx-auto"
+                                            max-width="300"
+                                            tile
+                                    >
+                                        <v-list rounded>
+                                            <v-subheader>PARTICIPANTS</v-subheader>
+                                            <v-list-item-group color="primary">
+                                                <v-list-item
+                                                        v-for="(attendance, i) in selectedEvent.attendances"
+                                                        :key="i"
+                                                >
+                                                    <v-list-item-icon>
+                                                        <v-icon> mdi-account </v-icon>
+                                                    </v-list-item-icon>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title v-text="attendance.participant.name + ' ' + attendance.participant.firstname"></v-list-item-title>
+                                                    </v-list-item-content>
+                                                </v-list-item>
+                                            </v-list-item-group>
+                                        </v-list>
+                                    </v-card>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-btn
@@ -126,7 +148,7 @@
             start: null,
             end: null,
             selectedEvent: {},
-            participant : null,
+            participantList : [],
             selectedElement: null,
             selectedOpen: false,
             events: [],

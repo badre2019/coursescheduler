@@ -38,20 +38,21 @@ public class Event {
     @OneToOne
     private Member member;
 
-    // a participant attends to an event (or session)
-    @OneToMany(mappedBy = "event")
-    private List<Attendance> attendances;
+    /*// a participant attends to an event (or session)
+    @OneToMany//(mappedBy = "event")
+    private List<Attendance> attendances;*/
 
-    /*@ManyToMany
+    @OneToMany
     @JoinTable(
             name="attendance"
             , joinColumns={
-            @JoinColumn(name="event_event_id", nullable=false)
+            @JoinColumn(name="event_id", nullable=false)
     }
             , inverseJoinColumns={
-            @JoinColumn(name="participant_participant_id", nullable=false)
+            @JoinColumn(name="participant_id", nullable=false)
     }
     )
-    private List<Participant> participantList;*/
+    private List<Attendance> attendances;
+
 
 }
