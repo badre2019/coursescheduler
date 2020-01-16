@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/participant"})
+@RequestMapping({"/participants"})
 public class ParticipantController {
 
     private ParticipantRepository participantRepository;
@@ -18,11 +18,11 @@ public class ParticipantController {
 
     // CRUD methods
 
-    //Retrieve All events (GET /events)
+    //Retrieve All events (GET /participants)
     @GetMapping
     public List findAll() {return participantRepository.findAll();}
 
-    //Create a new member (POST /members)
+    //Create a new member (POST /participants)
     @PostMapping
     public Participant create(@RequestBody Participant participant) {
 

@@ -104,7 +104,12 @@
                                                         <v-icon> mdi-account </v-icon>
                                                     </v-list-item-icon>
                                                     <v-list-item-content>
-                                                        <v-list-item-title v-text="attendance.participant.name + ' ' + attendance.participant.firstname"></v-list-item-title>
+                                                        <v-col cols="10" sm="4" md="5">
+                                                            <v-list-item-title v-model="participantList.name" v-text="attendance.participant.name"></v-list-item-title>
+                                                        </v-col>
+                                                        <v-col cols="10" sm="4" md="5">
+                                                            <v-list-item-title v-model="participantList.firstName" v-text="attendance.participant.firstname"></v-list-item-title>
+                                                        </v-col>
                                                     </v-list-item-content>
                                                 </v-list-item>
                                             </v-list-item-group>
@@ -112,6 +117,13 @@
                                     </v-card>
                                 </v-card-text>
                                 <v-card-actions>
+                                    <v-btn
+                                            text
+                                            color="green"
+                                            @click="addParticipant()"
+                                    >
+                                        Attend
+                                    </v-btn>
                                     <v-btn
                                             text
                                             color="secondary"
@@ -131,6 +143,7 @@
 
 <script>
     import apiEvent from "../apiEvent";
+    import apiParticipant from "../apiParticipant";
 
     export default {
         name: "Event",
@@ -148,7 +161,11 @@
             start: null,
             end: null,
             selectedEvent: {},
-            participantList : [],
+            participantList : {
+                id: null,
+                name: '',
+                firstName: ''
+            },
             selectedElement: null,
             selectedOpen: false,
             events: [],
@@ -201,6 +218,9 @@
                     .then(response => {
                         this.events = response.data
                     })
+            },
+            addParticipant(participant) {
+               apiParticipant.createNewParticipant(participant)
             },
             viewDay ({ date }) {
                 this.focus = date
