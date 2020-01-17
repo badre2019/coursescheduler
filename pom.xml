@@ -15,11 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<jib-maven-plugin.version>1.7.0</jib-maven-plugin.version>
-		<docker.image.prefix>baderregistry.azurecr.io</docker.image.prefix>
 		<java.version>1.8</java.version>
-		<username>baderregistry</username>
-		<password>{ce4bNRC2iyGaV8w=/HVXPxCRUBGYqbJm}</password>
 	</properties>
 
 	<dependencies>
@@ -86,24 +82,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<artifactId>jib-maven-plugin</artifactId>
-				<groupId>com.google.cloud.tools</groupId>
-				<version>1.8.0</version>
-				<configuration>
-					<from>
-						<image>openjdk:8-jre-alpine</image>
-					</from>
-					<to>
-						<image>{baderregistry.azurecr.io/coursescheduler</image>
-						<auth>
-							<username>{baderregistry}</username>
-							<password>{ce4bNRC2iyGaV8w=/HVXPxCRUBGYqbJm}</password>
-						</auth>
-					</to>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
